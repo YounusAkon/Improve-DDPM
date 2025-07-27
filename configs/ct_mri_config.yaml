@@ -1,0 +1,48 @@
+# CT to MRI Diffusion Model Configuration
+
+# Data settings
+data:
+  ct_dir: "data/ct_images"
+  mri_dir: "data/mri_images"
+  image_size: 256
+  batch_size: 4
+  num_workers: 4
+
+# Model settings
+model:
+  image_size: 256
+  in_channels: 1
+  model_channels: 128
+  out_channels: 1
+  num_res_blocks: 2
+  attention_resolutions: "16,8"
+  dropout: 0.1
+  channel_mult: [1, 2, 4, 8]
+  num_heads: 4
+  use_checkpoint: true
+
+# Diffusion settings
+diffusion:
+  steps: 1000
+  noise_schedule: "cosine"
+  beta_start: 0.0001
+  beta_end: 0.02
+  rescale_timesteps: true
+
+# Training settings
+training:
+  lr: 1e-4
+  weight_decay: 0.0
+  ema_rate: 0.9999
+  use_fp16: false
+  gradient_clip: 1.0
+  log_interval: 100
+  save_interval: 5000
+  max_steps: 500000
+
+# Sampling settings
+sampling:
+  num_samples: 4
+  use_ddim: true
+  ddim_steps: 50
+  eta: 0.0
