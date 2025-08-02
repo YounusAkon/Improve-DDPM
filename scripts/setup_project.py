@@ -1,6 +1,5 @@
 """
 CT to MRI Diffusion Model Project Setup
-এই স্ক্রিপ্ট প্রোজেক্ট structure তৈরি করে
 """
 
 import os
